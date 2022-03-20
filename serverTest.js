@@ -39,7 +39,7 @@ app.get('/sendMessage/:id', (req, res, next) => {
     if (index >= socketLists.length) res.json([])
     if (socketLists.length > 0) {
         console.log('Sockets available');
-        socketLists[index].write("Hellow Client from Server")
+        // socketLists[index].write("Hellow Client from Server")
         socketLists[index].emit("data","Hellow my friend");
 
         res.json(['Message Sent'])

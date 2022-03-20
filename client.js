@@ -1,6 +1,7 @@
 const { io } = require("socket.io-client");
 
-const url = 'http://127.0.0.1:9012';
+// const url = 'http://127.0.0.1:9012';
+const url = 'https://socketservernode.herokuapp.com';
 
 const socket = io(url);
 
