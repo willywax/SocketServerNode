@@ -17,9 +17,9 @@ server.listen(port, () => {
 io.on('connection', (socket) => {
     console.log('a user connected');
     // const data = [].push(socket)
-    const a = {};
-    a[socket.id] = socket;
-    socketLists.push(a);
+    // const a = {};
+    // a[socket.id] = socket;
+    socketLists.push(socket);
 
 });
 
@@ -33,6 +33,11 @@ app.get('/clients', (req, res, next) => {
     console.log('connection List ', socketLists);
     res.json(socketLists.length);
 });
+
+app.get('/disconnect', (req,res,next) =>{
+    socketLists.slice(0, socketLists.length);
+    res.json(['Data cleared']);
+})
 
 app.get('/sendMessage/:id', (req, res, next) => {
     const index = req.params.id;
