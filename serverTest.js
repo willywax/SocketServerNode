@@ -5,7 +5,7 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const port = 9012;
+const port = process.env.PORT || 9012;
 
 const socketLists = [];
 
