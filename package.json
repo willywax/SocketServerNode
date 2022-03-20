@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node serverTest.js",
+    "start": "node server2.js",
     "dev": "nodemon serverTest.js"
   },
   "dependencies": {
