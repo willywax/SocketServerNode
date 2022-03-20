@@ -49,18 +49,11 @@ server.on('data',(data)=>{
     console.log('CLIENT: ' + data.toString());
 })
 
-// while(true){
-//     for(clients in socketLists){
-//         clients.on('data', function(chunk) {
-//             console.log(`Data received from client: ${chunk.toString()}`);
-//         });
-//     }
-// }
 
 
 app.get('/clients',(req,res,next)=>{
     console.log('connection List ', socketLists);
-    res.json(socketLists);
+    res.send({socketLists});
 });
 
 app.get('/sendMessage/:id',(req,res,next)=>{

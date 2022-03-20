@@ -17,8 +17,8 @@ var connectionList = [];
 
 
 app.get('/clients',(req,res,next)=>{
-    console.log('connection List ', connectionList);
-    res.json(connectionList);
+    // console.log('connection List ', connectionList);
+    res.send({data: connectionList});
 });
 
 app.get('/sendMessage',(req,res,next)=>{

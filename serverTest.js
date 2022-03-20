@@ -1,4 +1,5 @@
 const express = require('express');
+const { json } = require('express/lib/response');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
@@ -8,17 +9,21 @@ const port = 9012;
 
 const socketLists = [];
 
-io.on('connection', (socket) => {
-    console.log('a user connected');
-    
-    socketLists.push(socket);
-
-});
-
 
 server.listen(port, () => {
     console.log('listening on *:', port);
 });
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+    // const data = [].push(socket)
+    const a = {};
+    a[socket.id] = socket;
+    socketLists.push(a);
+
+});
+
+
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
@@ -26,7 +31,7 @@ app.get('/', (req, res) => {
 
 app.get('/clients', (req, res, next) => {
     console.log('connection List ', socketLists);
-    res.json([]);
+    res.json(socketLists.length);
 });
 
 app.get('/sendMessage/:id', (req, res, next) => {
