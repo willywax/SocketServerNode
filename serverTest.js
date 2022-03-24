@@ -54,6 +54,8 @@ app.get('/disconnect/:id', (req,res,next) =>{
         socketLists[index].socket.emit("data","Hellow my friend");
         // socketLists[index].socket.emit("close","Hellow my friend");
         const socketIdIndex = socketIdList.findIndex(x => x === socketId);
+        socketIdList.splice(socketIdIndex,1);
+        socketLists.splice(index,1);
         console.log('Removing index from ',socketIdIndex);
         res.json(['Client connection closed']);
         // res.json(['Message Sent'])
