@@ -47,17 +47,14 @@ app.get('/disconnect/:id', (req,res,next) =>{
     if (socketLists.length > 0) {
         console.log('Sockets available');
         const index = socketLists.findIndex(x => x.key === socketId);
+       
         if(index < 0) res.json(['Socket Not available']);
         // socketLists[index].write("Hellow Client from Server")
         console.log('Closing socket with Index',index);
+        socketLists[index].socket.emit("data","Hellow my friend");
+        // socketLists[index].socket.emit("close","Hellow my friend");
         const socketIdIndex = socketIdList.findIndex(x => x === socketId);
         console.log('Removing index from ',socketIdIndex);
-        socketLists[index].socket.on('close', ()=>{
-            socketLists.splice(index,1);
-            socketIdList.splice(socketIdIndex,1);
-            console.log('Connection closed');
-           
-        })
         res.json(['Client connection closed']);
         // res.json(['Message Sent'])
     } else {

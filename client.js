@@ -19,7 +19,8 @@ socket.on("data", (data) => {
     console.log(`Client received: ${data}`); 
 });  
 // Add a 'close' event handler for the client socket 
-socket.on('close', () => { 
+socket.on("close", () => { 
+    socket.disconnect();
     console.log('Client closed'); 
 });  
 socket.on('error', (err) => { 
